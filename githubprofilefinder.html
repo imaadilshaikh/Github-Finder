@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Finder</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class"
+        };
+    </script>
+</head>
+
+<body class="min-h-screen bg-gray-100 text-gray-800 dark:bg-[#0e0e0f] dark:text-gray-100 transition-all duration-300">
+
+    <!-- Theme Toggle -->
+    <div class="flex justify-end p-4">
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false"
+            class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-lg shadow hover:brightness-110 transition-all duration-300">
+            <span class="theme-icon text-lg" aria-hidden="true">🌙</span>
+            <span class="theme-label">Dark mode</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <div class="flex flex-col justify-center items-center text-center px-4">
+        <h1 class="mt-12 text-3xl md:text-5xl font-semibold font-sans">
+            GitHub Profile Finder
+        </h1>
+
+        <p class="mt-2 text-lg font-light">
+            Search and view GitHub user profile in style
+        </p>
+    </div>
+
+    <!-- Search -->
+    <div
+        class="flex flex-col md:flex-row gap-3 md:gap-0 items-center justify-between bg-gray-500 dark:bg-gray-700 p-3 w-[95%] max-w-3xl mx-auto mt-8 rounded-2xl border-2 border-[#1b5ff1]">
+
+        <input id="text" type="text" placeholder="Type GitHub username"
+            class="w-full h-10 bg-transparent outline-none border-none text-white placeholder:text-gray-300 px-3">
+
+        <input id="getpro" type="submit" value="Search profile"
+            class="bg-[#1b5ff1] px-5 py-2 rounded-2xl border border-gray-200 cursor-pointer active:scale-95 transition">
+    </div>
+
+    <!-- Card -->
+    <div id="card" class="mt-12 px-4 md:px-12 flex justify-center items-center">
+
+        <!-- <div
+            class="bg-white dark:bg-[#242323] text-gray-800 dark:text-white rounded-2xl border border-[#1b5ff1] shadow-[10px_10px_20px_rgba(33,54,241,0.15)] flex flex-col md:flex-row p-8 font-medium text-[1.1rem] max-w-4xl w-full transition-all duration-300">
+
+           
+            <div class="flex justify-center md:block">
+                <img class="w-[100px] h-[100px] rounded-full border-2 border-[#f11b2d] md:mr-8"
+                    src="https://avatars.githubusercontent.com/u/170940588?v=4" alt="Profile">
+            </div>
+
+            <div class="right mt-4 md:mt-0 text-gray-700 dark:text-gray-200">
+
+                <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">
+                    Aadil Shaikh
+                </h1>
+
+                <p class="text-gray-500 dark:text-gray-400">
+                    imaadilshaikh
+                </p>
+
+                <p class="text-gray-500 dark:text-gray-400">
+                    I Don't Know: Who I am
+                </p>
+
+                <div class="flex gap-4 mt-3 flex-wrap text-gray-700 dark:text-gray-200">
+
+                    <h4 class="flex gap-1 items-center">
+                        <span>Public Repos:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">06</span>
+                    </h4>
+
+                    <h4 class="flex gap-1 items-center">
+                        <span>Followers:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">06</span>
+                    </h4>
+
+                    <h4 class="flex gap-1 items-center">
+                        <span>Following:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">03</span>
+                    </h4>
+
+                    <h4 class="flex gap-1 items-center">
+                        <span>Location:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">Delhi</span>
+                    </h4>
+
+                </div>
+
+                <div class="flex gap-4 mt-3 flex-wrap text-gray-700 dark:text-gray-200">
+
+                    <h4 class="flex gap-1 items-center">
+                        <span>Company:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">None</span>
+                    </h4>
+
+                    <h4 class="flex gap-1 items-center flex-wrap">
+                        <span>Blog:</span>
+
+                        <a href="https://aadilshaikhportfolio.antideploy.com" target="_blank" rel="noreferrer"
+                            class="text-[#1b5ff1] hover:underline break-all">
+                            https://aadilshaikhportfolio.antideploy.com
+                        </a>
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+        </div> -->
+
+        <!-- User Not Found -->
+
+        <!-- <div class="bg-white dark:bg-[#242323] text-gray-800 dark:text-white rounded-2xl border border-[#f11b2d] shadow-[10px_10px_20px_rgba(241,27,45,0.15)] flex flex-col items-center text-center p-8 max-w-md w-full transition-all duration-300">
+        
+        <div class="text-5xl mb-3">🔍</div>
+
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+            User Not Found
+        </h2>
+
+        <p class="mt-2 text-gray-500 dark:text-gray-400">
+            Koi GitHub user is username se nahi mila. Spelling check karke dobara try karo.
+        </p>
+
+    </div> -->
+
+    </div>
+
+
+
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeLabel = document.querySelector(".theme-label");
+        const searchbtn = document.querySelector("#getpro")
+        const cardUI = document.querySelector("#card")
+
+
+        function cardHTML() {
+            return `
+             <div id="card" class="mt-12 px-4 md:px-12 flex justify-center items-center">
+        <div
+            class="bg-white dark:bg-[#242323] text-gray-800 dark:text-white rounded-2xl border border-[#1b5ff1] shadow-[10px_10px_20px_rgba(33,54,241,0.15)] flex flex-col md:flex-row p-8 font-medium text-[1.1rem] max-w-4xl w-full transition-all duration-300">
+            <!-- Image -->
+            <div class="flex justify-center md:block">
+                <img class="w-[100px] h-[100px] rounded-full border-2 border-[#f11b2d] md:mr-8"
+                    src="${user.avatar_url}" alt="Profile">
+            </div>
+            <!-- Info -->
+            <div class="right mt-4 md:mt-0 text-gray-700 dark:text-gray-200">
+                <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">
+                    ${user.name}
+                </h1>
+                <p class="text-gray-500 dark:text-gray-400">
+                    ${user.login}
+                </p>
+                <p class="text-gray-500 dark:text-gray-400">
+                    ${user.bio}
+                </p>
+                <div class="flex gap-4 mt-3 flex-wrap text-gray-700 dark:text-gray-200">
+                    <h4 class="flex gap-1 items-center">
+                        <span>Public Repos:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">${user.public_repos}</span>
+                    </h4>
+                    <h4 class="flex gap-1 items-center">
+                        <span>Followers:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">${user.followers}</span>
+                    </h4>
+                    <h4 class="flex gap-1 items-center">
+                        <span>Following:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">${user.following}</span>
+                    </h4>
+                    <h4 class="flex gap-1 items-center">
+                        <span>Location:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">${user.location}</span>
+                    </h4>
+                </div>
+                <div class="flex gap-4 mt-3 flex-wrap text-gray-700 dark:text-gray-200">
+                    <h4 class="flex gap-1 items-center">
+                        <span>Company:</span>
+                        <span class="text-gray-900 dark:text-white font-semibold">${user.company}</span>
+                    </h4>
+
+                    <h4 class="flex gap-1 items-center flex-wrap">
+                        <span>Blog:</span>
+
+                        <a href="https://aadilshaikhportfolio.antideploy.com" target="_blank" rel="noreferrer"
+                            class="text-[#1b5ff1] hover:underline break-all">
+                            ${user.blog}
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>`
+        }
+
+        function usernotfound() {
+            return `
+            <div class="bg-white dark:bg-[#242323] text-gray-800 dark:text-white rounded-2xl border border-[#f11b2d] shadow-[10px_10px_20px_rgba(241,27,45,0.15)] flex flex-col items-center text-center p-8 max-w-md w-full transition-all duration-300">
+        
+                <div class="text-5xl mb-3">🔍</div>
+
+                <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
+                    User Not Found
+                </h2>
+
+                <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    Koi GitHub user is username se nahi mila. Spelling check karke dobara try karo.
+                </p>
+
+            </div>
+            `
+        }
+
+        searchbtn.addEventListener('click', function () {
+
+            const username = text.value.trim();
+            if (username === "") {
+                alert("Please Enter the username")
+                return;
+            }
+
+            fetch(`https://api.github.com/users/${username}`)
+                .then((raw) => {
+                    if (!raw.ok) {
+                        throw new Error("User not found")
+                    }
+                    return raw.json();
+                })
+                .then((data) => {
+                    user = data;
+                    cardUI.innerHTML = cardHTML();
+                })
+                .catch((err) => {
+                    console.log(err);
+                    cardUI.innerHTML = usernotfound();
+                })
+        });
+
+
+        // Theme
+
+        function theme() {
+
+            function applyTheme(theme) {
+                const isDark = theme === "dark";
+                document.documentElement.classList.toggle("dark", isDark);
+
+                if (themeIcon) {
+                    themeIcon.textContent = isDark ? "☀️" : "🌙";
+                }
+
+                if (themeLabel) {
+                    themeLabel.textContent = isDark ? "Light mode" : "Dark mode";
+                }
+
+                if (themeToggle) {
+                    themeToggle.setAttribute("aria-pressed", String(isDark));
+                }
+            }
+
+            function getPreferredTheme() {
+                try {
+                    const savedTheme = localStorage.getItem("theme");
+                    if (savedTheme === "dark" || savedTheme === "light") {
+                        return savedTheme;
+                    }
+                } catch (error) {
+                    console.warn("Unable to access localStorage:", error);
+                }
+
+                return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            }
+
+            function initTheme() {
+                applyTheme(getPreferredTheme());
+            }
+
+            if (themeToggle) {
+                themeToggle.addEventListener("click", () => {
+                    const nextTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
+                    applyTheme(nextTheme);
+
+                    try {
+                        localStorage.setItem("theme", nextTheme);
+                    } catch (error) {
+                        console.warn("Unable to save theme to localStorage:", error);
+                    }
+                });
+            }
+
+            initTheme();
+        }
+
+        theme();
+
+
+    </script>
+
+</body>
+
+</html>
